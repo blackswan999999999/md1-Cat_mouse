@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //Superclass Animals
+    class Animals {
+        constructor(name, weight, speed, sound) {
+            this.name = name;
+            this.weight = weight;
+            this.speed = speed;
+            this.sound = sound;
+        }
+    }
+
+    //Subclass Mouse
+    class Mouse extends Animals {
+        constructor(name, weight, speed, sound, isAlive) {
+            // Constructor là một cấu trúc khởi tạo các thuộc tính của mỗi đối tượng (vd: Mouse)
+            super(name, weight, speed, sound)
+            //super()   gọi phương thức khởi tạo của  lớp cha và nhận được quyền truy
+            // cập vào các thuộc tính và phương thức của lớp cha.
+
+
+            this.isAlive = isAlive;
+        }
+    }
+
+    //Subclass Cat
+    class Cat extends Animals {
+        constructor(name, weight, speed, sound) {
+            super(name, weight, speed, sound)
+        }
+
+        catchMouse(mouse) {
+            if (this.speed > mouse.speed) {
+                mouse.isAlive = false
+            } else {
+                mouse.isAlive = true;
+            }
+        }
+
+        eatMouse(mouse) {
+            if (mouse.status===false) {
+                console.log(`${this.name} trước khi ăn = ${this.weight}`);
+                this.weight += mouse.weight
+                console.log(`${this.name} sau khi ăn = ${this.weight}`);
+            }
+
+        }
+    }
+
+    let mouse = new Mouse('chuột', 10, 20, 'chít chít', true);
+
+    let cat = new Cat('mèo', 20, 25, 'mèo méo meo');
+
+    // // cat.catchMouse(mouse);
+    // // cat.eatMouse(mouse);
+    // //
+    // let superMouse = new Mouse('siêu chuột', 20, 30, 'ối dồi ôi mèo ôi', true);
+    // //
+    // // cat.catchMouse(superMouse);
+</script>
+</html>
